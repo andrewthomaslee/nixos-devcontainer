@@ -1,28 +1,21 @@
 {
-    "name": "NixOS DinD",
-    "image": "andrewthomaslee/nixos-devcontainer:latest",
-    "remoteUser": "code",
-    "overrideCommand": false,
-    "runArgs": [
-        "--privileged",
-        "--cap-add=SYS_ADMIN",
-        "--security-opt=seccomp=unconfined",
-        "--tmpfs",
-        "/run",
-        "--tmpfs",
-        "/run/lock",
-        "--tmpfs",
-        "/tmp",
-        "-v",
-        "/sys/fs/cgroup:/sys/fs/cgroup:rw",
-        "-v",
-        "nixos-devcontainer-docker-data:/var/lib/docker",
-        "-v",
-        "nixos-devcontainer-store-data:/nix"
-    ],
+    "name": "Nix + Docker in Docker",
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "features": {
+        "ghcr.io/devcontainers/features/nix:1": {
+            "extraOptions": "experimental-features = nix-command flakes\n"
+        },
+        "ghcr.io/devcontainers/features/docker-in-docker:2": {
+            "version": "latest",
+            "enableNonRootDocker": "true",
+            "moby": "true"
+        }
+    },
+    "remoteUser": "vscode",
     "customizations": {
         "vscode": {
             "extensions": [
+                "mkhl.direnv",
                 "jnoortheen.nix-ide",
                 "meta.pyrefly",
                 "ms-python.python",
