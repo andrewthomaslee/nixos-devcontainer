@@ -13,8 +13,22 @@
         # adds the `config.system.build.tarball` attribute
         "${nixpkgs}/nixos/modules/virtualisation/docker-image.nix"
 
-        ({pkgs, ...}: {
+        ({
+          pkgs,
+          lib,
+          ...
+        }: {
           boot.isContainer = true;
+
+          environment.etc."resolv.conf".enable = false;
+          environment.etc.hosts.enable = false;
+          environment.etc.hostname.enable = false;
+          networking.resolvconf.enable = false;
+          boot.postBootCommands = lib.mkForce ''
+            mkdir -p /run/systemd
+            echo "docker" > /run/systemd/container
+          '';
+          nix.channel.enable = false;
 
           # Enable Docker-in-Docker
           virtualisation.docker.enable = true;
