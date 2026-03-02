@@ -31,5 +31,5 @@ devcontainer up --workspace-folder .
 
 ### Execute a Command in the Container
 ```bash
-devcontainer exec --workspace-folder . bash
+devcontainer exec --workspace-folder . nix develop
 ```

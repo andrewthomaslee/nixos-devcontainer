@@ -34,5 +34,10 @@
             };
           }
       );
+
+      templates.nix-devcontainer = {
+        path = ./.;
+        description = "Docker outside of Docker + Nix package manager + Tailscale";
+      };
     };
 }
