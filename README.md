@@ -11,6 +11,9 @@ docker run -d \
   --privileged \
   --cap-add=SYS_ADMIN \
   --security-opt=seccomp=unconfined \
+  --tmpfs /run \
+  --tmpfs /run/lock \
+  --tmpfs /tmp \
   -v /sys/fs/cgroup:/sys/fs/cgroup:rw \
   -v nixos-devcontainer-store-data:/nix \
   -v nixos-devcontainer-docker-data:/var/lib/docker \
