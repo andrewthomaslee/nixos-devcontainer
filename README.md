@@ -1,4 +1,10 @@
-# VSCode Devcontainer
+# VSCode Dev Container
+
+The `Visual Studio Code` `Dev Containers` extension allows you to use a Docker container as a complete development environment, ensuring consistent, reproducible*, and isolated toolchains across different machines and team members
+
+* [Microsoft Devcontainers Docs](https://code.visualstudio.com/docs/devcontainers/containers)
+* [devcontainers.json Spec](https://containers.dev/implementors/json_reference/)
+
 
 ## Requirements
 * [Docker](https://docs.docker.com/engine/install/)
